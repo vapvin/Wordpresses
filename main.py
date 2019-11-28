@@ -38,3 +38,18 @@ class User(AbstractUser):
         (LOGIN_GITHUB, "Github"),
         (LOGING_KAKAO, "Kakao"),
     )
+
+    CURRENCY_USD = "usd"
+    CURRENCY_KRW = "krw"
+
+    CURRENCY_CHOICES = ((CURRENCY_USD, "USD"), (CURRENCY_KRW, "KRW"))
+
+    LOGING_EMAIL = "email"
+    LOGIN_GITHUB = "github"
+    LOGING_KAKAO = "kakao"
+
+    LOGIN_CHOICES = (
+        (LOGING_EMAIL, "Email"),
+        (LOGIN_GITHUB, "Github"),
+        (LOGING_KAKAO, "Kakao"),
+    )

@@ -1,11 +1,58 @@
 #include <stdio.h>
-#define _CTR_SECURE_NO_WARNINGS
+#include <windows.h>
+#include <conio.h>
+#include <time.h>
+#include <stdlib.h>
 
-int main(void)
-{
-    scanf("%d", &a);
-    printf("Hello World \n");
-    printf("%d", a);
+#define LEFT 75
+#define RIGHT 77
+#define UP 72
+#define DOWN 80
+#define SPACE 32
+#define p 112
+#define P 80
+#define ESC 27
 
-    return 0;
-}
+#define false 0
+#define true 1
+
+#define ACTIVE_BLOCK -2
+#define CEILLING -1
+#define EMPTY 0
+#define WALL 1
+#define INACTIVE_BLOCK 2
+
+#define MAIN_X 11
+#define MAIN_Y 23
+#define MAIN_X_ADJ 3
+#define MAIN_Y_ADJ 1
+
+#define STATUS_X_ADJ MAIN_X_ADJ + MAIN_X + 1
+
+int STATUS_YGOAL;
+int STATUS_Y_LEVEl;
+int STATUS_Y_SCORE;
+
+int blocks[7][4][4][4] = {
+    {{0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0}},
+    {{0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0}, {0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0}, {0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0}},
+    {{0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0}},
+    {{0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0}},
+    {{0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0}},
+    {{0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0}, {0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0}},
+    {{0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0}}};
+
+int b_type;
+int b_rotation;
+int b_type_next;
+
+int main_org[MAIN_Y][MAIN_X];
+int main_cpy[MAIN_Y][MAIN_X];
+
+int bx, by;
+
+int key;
+
+int speed;
+int level;
+int level_goal;

@@ -6,6 +6,19 @@ from django.core.mail import send_mail
 from django.utils.html import strip_tags
 from django.shortcuts import reverse
 from django.template.loader import render_to_string
+import os
+import requests
+from django.contrib.auth.views import PasswordChangeView
+from django.views.generic import FormView, DetailView, UpdateView
+from django.urls import reverse_lazy
+from django.shortcuts import redirect, reverse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.core.files.base import ContentFile
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from . import forms, models, mixins
+
 
 class User(AbstractUser):
 
@@ -93,3 +106,25 @@ class User(AbstractUser):
             )
             self.save()
         return
+
+
+        
+class LoginView(mixins.LoggedOutOnlyView, FormView):
+
+    template_name = "users/login.html"
+    form_class = forms.LoginForm
+
+    def form_valid(self, form):
+        email = form.cleaned_data.get("email")
+        password = form.cleaned_data.get("password")
+        user = authenticate(self.request, username=email, password=password)
+        if user is not None:
+            login(self.request, user)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        next_arg = self.request.GET.get("next")
+        if next_arg is not None:
+            return next_arg
+        else:
+            return reverse("core:home")

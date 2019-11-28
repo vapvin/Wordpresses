@@ -1,11 +1,9 @@
-# total study of python
-
-print("Hello World")
-
-a=2
-b=1
-
-for a range(9):
-    for b range(9):
-        print(f"{a}*{b}={a*b})
+import uuid
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+from django.core.mail import send_mail
+from django.utils.html import strip_tags
+from django.shortcuts import reverse
+from django.template.loader import render_to_string
 

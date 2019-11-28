@@ -128,3 +128,10 @@ class LoginView(mixins.LoggedOutOnlyView, FormView):
             return next_arg
         else:
             return reverse("core:home")
+
+    
+
+def log_out(request):
+    messages.info(request, f"See you later")
+    logout(request)
+    return redirect(reverse("core:home"))

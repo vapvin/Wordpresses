@@ -56,3 +56,21 @@ int key;
 int speed;
 int level;
 int level_goal;
+int cnt;
+int score;
+int last_score = 0;
+int best_score = 0;
+
+int new_block_on = 0;
+int crush_on = 0;
+int level_up_on = 0;
+int space_key_on = 0;
+
+void title(void);
+void reset(void);
+void reset_main_cpy(void);
+void draw_map(void);
+void draw_main(void);
+void new_block(void);
+void check_key(void);
+void drop_block(void);

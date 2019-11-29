@@ -331,3 +331,50 @@ void draw_map(void)
     gotoxy(STATUS_X_ADJ, y + 20);
     printf("blog.naver.com/azure0777");
 }
+
+void draw_main(void)
+{
+    int i, j;
+
+    for (j = 1; j < MAIN_X - 1; j++)
+    {
+        if (main_org[3][j] == EMPTY)
+            main_org[3][j] = CEILLING;
+    }
+    for (i = 0; i < MAIN_Y; i++)
+    {
+        for (j = 0; j < MAIN_X; j++)
+        {
+            if (main_cpy[i][j] != main_org[i][j])
+            {
+
+                gotoxy(MAIN_X_ADJ + j, MAIN_Y_ADJ + i);
+                switch (main_org[i][j])
+                {
+                case EMPTY:
+                    printf("  ");
+                    break;
+                case CEILLING:
+                    printf(". ");
+                    break;
+                case WALL:
+                    printf("▩");
+                    break;
+                case INACTIVE_BLOCK:
+                    printf("□");
+                    break;
+                case ACTIVE_BLOCK:
+                    printf("■");
+                    break;
+                }
+            }
+        }
+    }
+    for (i = 0; i < MAIN_Y; i++)
+    {
+        for (j = 0; j < MAIN_X; j++)
+        {
+            main_cpy[i][j] = main_org[i][j];
+        }
+    }
+}

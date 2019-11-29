@@ -249,3 +249,30 @@ void reset(void)
     b_type_next = rand() % 7;
     new_block();
 }
+
+void reset_main(void)
+{
+    int i, j;
+
+    for (i = 0; i < MAIN_Y; i++)
+    {
+        for (j = 0; j < MAIN_X; j++)
+        {
+            main_org[i][j] = 0;
+            main_cpy[i][j] = 100;
+        }
+    }
+    for (j = 1; j < MAIN_X; j++)
+    {
+        main_org[3][j] = CEILLING;
+    }
+    for (i = 1; i < MAIN_Y - 1; i++)
+    {
+        main_org[i][0] = WALL;
+        main_org[i][MAIN_X - 1] = WALL;
+    }
+    for (j = 0; j < MAIN_X; j++)
+    {
+        main_org[MAIN_Y - 1][j] = WALL;
+    }
+}

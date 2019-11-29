@@ -276,3 +276,16 @@ void reset_main(void)
         main_org[MAIN_Y - 1][j] = WALL;
     }
 }
+
+void reset_main_cpy(void)
+{
+    int i, j;
+
+    for (i = 0; i < MAIN_Y; i++)
+    {
+        for (j = 0; j < MAIN_X; j++)
+        {
+            main_cpy[i][j] = 100;
+        }
+    }
+}

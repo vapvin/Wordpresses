@@ -110,3 +110,13 @@ void setcursortype(CURSOR_TYPE c)
     }
     SetConsoleCursorinfo(GetStdHandle(STD_OUTPUT_HANDLE), &CurInfo);
 }
+
+int main()
+{
+    int i;
+
+    srand((unsigned)time(NULL));
+    setcursortype(NOCURSOR);
+    title();
+    reset();
+}

@@ -119,27 +119,27 @@ int main()
     setcursortype(NOCURSOR);
     title();
     reset();
-}
 
-while (1)
-{
-    for (i = 0; i < 5; i++)
+    while (1)
     {
-        check_key();
-        draw_main();
-        Sleep(speed);
-        if (crush_on && check_crush(bx, by + 1, b_rotation) == false)
-            Sleep(100);
-
-        if (space_key_on == 1)
+        for (i = 0; i < 5; i++)
         {
-            space_key_on = 0;
-            break;
+            check_key();
+            draw_main();
+            Sleep(speed);
+            if (crush_on && check_crush(bx, by + 1, b_rotation) == false)
+                Sleep(100);
+
+            if (space_key_on == 1)
+            {
+                space_key_on = 0;
+                break;
+            }
         }
+        drop_block();
+        check_level_up();
+        check_game_over();
+        if (new_block_on == 1)
+            new_block();
     }
-    drop_block();
-    check_level_up();
-    check_game_over();
-    if (new_block_on == 1)
-        new_block();
 }

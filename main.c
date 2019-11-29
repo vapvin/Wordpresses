@@ -74,3 +74,39 @@ void draw_main(void);
 void new_block(void);
 void check_key(void);
 void drop_block(void);
+int check_crush(int bx, int by, int rotation);
+void move_block(int dir);
+void check_line(void);
+void check_level_up(void);
+void check_game_over(void);
+void pause(void);
+
+void gotoxy(int x, int y)
+{
+    COORD pos = {2 * x, y};
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+typedef eunm{NOCURSOR, SOLIDCURSOR, NORMALCURSOR} CURSOR_TYPE;
+
+void setcursortype(CURSOR_TYPE c)
+{
+    CONSOLE_CURSOR_INFO CurInfo;
+
+    switch (c)
+    {
+    case NOCURSOR:
+        Curinfo.dwSize = 1;
+        CurInfo.bVisible = FALSE;
+        break;
+    case SOLIDCURSOR:
+        CurInfo.dwSize = 100;
+        CurInfo.bVisble = TRUE;
+        break;
+    case NORMALCURSOR:
+        CurInfo.dwSize = 20;
+        CurInfo.bVisible = TRUE;
+        break;
+    }
+    SetConsoleCursorinfo(GetStdHandle(STD_OUTPUT_HANDLE), &CurInfo);
+}

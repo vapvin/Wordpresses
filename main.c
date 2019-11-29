@@ -143,3 +143,78 @@ int main()
             new_block();
     }
 }
+
+void title(void)
+{
+    int x = 5;
+    int y = 4;
+    int cnt;
+
+    gotoxy(x, y + 0);
+    printf("■□□□■■■□□■■□□■■");
+    Sleep(100);
+    gotoxy(x, y + 1);
+    printf("■■■□  ■□□    ■■□□■");
+    Sleep(100);
+    gotoxy(x, y + 2);
+    printf("□□□■              □■  ■");
+    Sleep(100);
+    gotoxy(x, y + 3);
+    printf("■■□■■  □  ■  □□■□□");
+    Sleep(100);
+    gotoxy(x, y + 4);
+    printf("■■  ■□□□■■■□■■□□");
+    Sleep(100);
+    gotoxy(x, y + 5);
+    printf("      blog.naver.com/azure0777");
+    Sleep(100);
+    gotoxy(x + 5, y + 2);
+    printf("T E T R I S");
+    Sleep(100);
+    gotoxy(x, y + 7);
+    printf("Please Enter Any Key to Start..");
+    gotoxy(x, y + 9);
+    printf("  △   : Shift");
+    gotoxy(x, y + 10);
+    printf("◁  ▷ : Left / Right");
+    gotoxy(x, y + 11);
+    printf("  ▽   : Soft Drop");
+    gotoxy(x, y + 12);
+    printf(" SPACE : Hard Drop");
+    gotoxy(x, y + 13);
+    printf("   P   : Pause");
+    gotoxy(x, y + 14);
+    printf("  ESC  : Quit");
+    gotoxy(x, y + 16);
+    printf("BONUS FOR HARD DROPS / COMBOS");
+
+    for (cnt = 0;; cnt++)
+    {
+        if (kbhit())
+            break;
+        if (cnt % 200 == 0)
+        {
+            gotoxy(x + 4, y + 1);
+            printf("★");
+        }
+        if ((cnt % 200 - 100) == 0)
+        {
+            gotoxy(x + 4, y + 1);
+            printf("  ");
+        }
+        if ((cnt % 350) == 0)
+        {
+            gotoxy(x + 13, y + 2);
+            printf("☆");
+        }
+        if ((cnt % 350 - 100) == 0)
+        {
+            gotoxy(x + 13, y + 2);
+            printf("  ");
+        }
+        Sleep(10);
+    }
+
+    while (kbhit())
+        getch();
+}

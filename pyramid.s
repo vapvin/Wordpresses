@@ -42,4 +42,14 @@ _up:
     add r9, 1
     jmp _small
 
+_down:
+    cmp r9, 0
+    je _done
+    mov rsi, EMPTY
+    syscall
+    mov rax, 1
+    mov r10, 0
+    sub r9, 1
+    jmp _big
+
     

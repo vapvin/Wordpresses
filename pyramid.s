@@ -60,4 +60,12 @@ _big:
     mov rax, 1
     inc r10
     jmp _big
-    
+
+_done:
+    mov rax, 60
+    mov rdi, 0
+    syscall
+
+_syscall:
+    syscall
+    ret

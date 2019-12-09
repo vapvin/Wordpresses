@@ -31,4 +31,15 @@ _small:
     mov rax, 1
     inc r10
     jmp _small
+
+_up:
+    cmp r9, r8
+    je _down
+    mov rsi, EMPTY
+    syscall
+    mov rax, 1
+    mov r10, 0
+    add r9, 1
+    jmp _small
+
     

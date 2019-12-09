@@ -52,4 +52,12 @@ _down:
     sub r9, 1
     jmp _big
 
+_big:
+    cmp r10, r9
+    je _down
+    mov rsi, STAR
+    syscall
+    mov rax, 1
+    inc r10
+    jmp _big
     

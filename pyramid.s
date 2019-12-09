@@ -22,3 +22,13 @@ _start:
     mov r8, r9
     xor r9, r9
     call _syscall
+
+_small:
+    cmp r10, r9
+    je _up
+    mov rsi, STAR
+    syscall
+    mov rax, 1
+    inc r10
+    jmp _small
+    

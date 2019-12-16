@@ -3,6 +3,9 @@
 #include<conio.h>
 #include<time.h>
 #include<stdlib.h>
+
+//Fuck UTF-8 Where? 
+//인코딩 오류 발생중
  
 #define LEFT 75 //좌로 이동    //키보드값들 
 #define RIGHT 77 //우로 이동 

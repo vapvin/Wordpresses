@@ -8,50 +8,40 @@
 </head>
 <body>
 
-    <article>
-        <h3 class="art"></h3>
-        <p class="dot"></p>
-    </article>
-    <article>
-        <h3 class="art"></h3>
-        <p class="dot"></p>
-        <p class="toy"></p>
-
-    </article>
-    <article>
-        <h3 class="art"></h3>
-        <p class="dot"></p>
-        <p class="toy"></p>
-
-    </article>
     
-
 
     <script>
 
-        var title = document.getElementsByClassName("art");
-        var des = document.getElementsByClassName("dot");
-        var wha = document.getElementsByClassName("toy");
-
-        var a = 1;
-        var b = 2;
-        var c = 3;
-
-
-        var list = [
-        [{"name":"Title"},{"description": "설명"}],
-        [{"name":"Title"},{"description": "설명"},{"what": "is"}],
-        [{"name":"Title"},{"description": "설명"},{"what": "is"}]
-        ];
-
-        for (var i=0;i<list.length;i++) {
-            for (var j=0;j<list[i].length;j++) {
-                title[i].innerHTML = list[j][i].name;
-                des[i].innerHTML = list[i][j].description;
-                wha[i].innerHTML = list[i][j].what;
-            }
+        function randomColor() {
+            return false;
         }
 
+        function Star(i, k) {
+            this.x = k;
+            this.y = i;
+            this.color = randomColor();
+            this.body = document.createElement('h1');
+            this.body.innerHTML = this.color + this.y + this.x;
+
+            this.body.onclick = () => {
+                console.log(this.x);
+                console.log(this.y);
+            }
+
+            document.body.appendChild(this.body);
+
+        }
+
+        Star.prototype.checking = function(){
+            alert("check!");
+        }
+
+        function Blank() {
+            this.body = document.createElement('br');
+            document.body.appendChild(this.body);
+        }
+
+        var starts = new Star(3,8);
 
     </script>
 </body>

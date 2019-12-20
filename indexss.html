@@ -29,7 +29,29 @@
 
     <script>
 
-            
+        var title = document.getElementsByClassName("art");
+        var des = document.getElementsByClassName("dot");
+        var wha = document.getElementsByClassName("toy");
+
+        var a = 1;
+        var b = 2;
+        var c = 3;
+
+
+        var list = [
+        [{"name":"Title"},{"description": "설명"}],
+        [{"name":"Title"},{"description": "설명"},{"what": "is"}],
+        [{"name":"Title"},{"description": "설명"},{"what": "is"}]
+        ];
+
+        for (var i=0;i<list.length;i++) {
+            for (var j=0;j<list[i].length;j++) {
+                title[i].innerHTML = list[j][i].name;
+                des[i].innerHTML = list[i][j].description;
+                wha[i].innerHTML = list[i][j].what;
+            }
+        }
+
 
     </script>
 </body>

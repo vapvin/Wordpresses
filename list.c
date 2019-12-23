@@ -8,6 +8,13 @@ typedef struct {
 
 Node *head;
 
+void addFront(Node *root, int data){
+    Node *node = (Node*)malloc(sizeof(Node));
+    node -> data = data;
+    node -> next = root->next;
+    root -> next = node;
+}
+
 int main(void) {
 
     head = (Node*)malloc(sizeof(Node));

@@ -21,6 +21,15 @@ void removeFront(Node *root) {
     free(front);
 }
 
+void freeAll(Node *root) {
+    Node *cur = head->next;
+    while(cur != NULL){
+        Node *next = cur -> next;
+        free(cur);
+        cur = next;
+    }
+}
+
 int main(void) {
 
     head = (Node*)malloc(sizeof(Node));

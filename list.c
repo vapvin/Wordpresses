@@ -15,6 +15,12 @@ void addFront(Node *root, int data){
     root -> next = node;
 }
 
+void removeFront(Node *root) {
+    Node *front = root->next;
+    root->next = front->next;
+    free(front);
+}
+
 int main(void) {
 
     head = (Node*)malloc(sizeof(Node));

@@ -30,6 +30,15 @@ void freeAll(Node *root) {
     }
 }
 
+void showAll(Node *root) {
+    Node *cur = head -> next;
+    while(cur != NULL) {
+        printf("%d", cur->data);
+        cur = cur -> next;
+    }
+    
+}
+
 int main(void) {
 
     head = (Node*)malloc(sizeof(Node));
@@ -40,11 +49,6 @@ int main(void) {
     head -> next = node1;
     node1 -> next = node2;
     node2 -> next = NULL;
-    Node *cur = head -> next;
-    while(cur != NULL) {
-        printf("%d", cur->data);
-        cur = cur -> next;
-    }
     
     
     return 0;

@@ -29,6 +29,17 @@
 
     <script>
 
+        class Stars {
+            constructor( i, k) {
+                this.x = i;
+                this.y = k;
+                this.color = randomColor();
+                this.body = document.createElement('h1');
+                this.body.innerHTML = this.color + this.x + this.y;
+                
+            }
+        }
+
         function randomColor() {
             return Math.random();
         }

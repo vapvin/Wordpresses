@@ -23,9 +23,8 @@
             this.body = document.createElement('h1');
             this.body.innerHTML = this.color + this.y + this.x;
 
-            this.body.onclick = () => {
-                console.log(this.x);
-                console.log(this.y);
+            this.body.onclick = function(){
+                console.log(this);
             }
 
             document.body.appendChild(this.body);

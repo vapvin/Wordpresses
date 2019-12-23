@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define INF 10000
 
 typedef struct {
     int data;
-    Node *next;
+    struct Node *next;
 } Node;
 
 Node *head;

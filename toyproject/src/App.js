@@ -1,20 +1,10 @@
 import React from 'react';
-import Hello from './Hello';
+import Input from './Input';
 
 
 function App() {
-  return ( <
-    div >
-    <
-    Hello / >
-    <
-    Hello / >
-    <
-    Hello / >
-    <
-    Hello / >
-    <
-    /div>
+  return (
+    <Input /> 
   );
 }
 

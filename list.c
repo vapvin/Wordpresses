@@ -42,14 +42,19 @@ void showAll(Node *root) {
 int main(void) {
 
     head = (Node*)malloc(sizeof(Node));
-    Node *node1 = (Node*)malloc(sizeof(Node));
-    node1->data = 1;
-    Node *node2 = (Node*)malloc(sizeof(Node));
-    node2->data = 2;
-    head -> next = node1;
-    node1 -> next = node2;
-    node2 -> next = NULL;
+    head -> next = NULL;
+    addFront(head, 3);
+    addFront(head, 6);
+    addFront(head, 2);
+    addFront(head, 8);
+    addFront(head, 4);
+    addFront(head, 9);
+    removeFront(head);
+    showAll(head);
+    freeAll(head);
+
     
+
     
     return 0;
 }
